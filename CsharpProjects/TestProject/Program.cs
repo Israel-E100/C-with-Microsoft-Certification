@@ -45,15 +45,37 @@
 //     Console.WriteLine($"--{pallet}");
 // }
 
-string value = "abc123";
-char[] valueArray = value.ToCharArray();
-Array.Reverse(valueArray);
-//string result = new string (valueArray);
-string result = String.Join(",", valueArray);
-Console.WriteLine(result);
+// string value = "abc123";
+// char[] valueArray = value.ToCharArray();
+// Array.Reverse(valueArray);
+// //string result = new string (valueArray);
+// string result = String.Join(",", valueArray);
+// Console.WriteLine(result);
 
-string[] items = result.Split(',');
-foreach (string item in items)
+// string[] items = result.Split(',');
+// foreach (string item in items)
+// {
+//     Console.WriteLine(item);
+// }
+
+using System.IO.Pipelines;
+
+string pangram = "The quick brown fox jumps over the lazy dog";
+string[] items = pangram.Split(" ");
+string resultado = "";
+foreach (var item in items)
 {
-    Console.WriteLine(item);
+    char[] valueArray = item.ToCharArray();
+    Array.Reverse(valueArray);
+    string result = new string (valueArray);
+    resultado += result + " ";
 }
+Console.WriteLine($"{resultado}");
+
+
+//char[] valueArray = pangram.ToCharArray();
+//Array.Reverse(valueArray);
+//Console.WriteLine(valueArray);
+
+//string result = String.Join("", valueArray);
+//Console.WriteLine(result);
